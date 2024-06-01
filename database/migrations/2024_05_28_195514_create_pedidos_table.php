@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->cascadeOnDelete();
+            $table->foreignId('usuario_id')->constrained('users')->cascadeOnDelete();
             $table->decimal('valor_total', 10, 2)->nullable();
             $table->string('metodo_pagamento')->nullable();
             $table->string('status_pagamento')->nullable();
             $table->enum('status', ['pendente', 'processando', 'enviado', 'entregue', 'cancelado'])->default('pendente');
             $table->decimal('valor_envio', 10, 2)->nullable();
+            $table->string('metodo_envio')->nullable();
             $table->text('observacao')->nullable();
             $table->timestamps();
         });

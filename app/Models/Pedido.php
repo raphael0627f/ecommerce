@@ -21,7 +21,7 @@ class Pedido extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function itens()
@@ -29,7 +29,7 @@ class Pedido extends Model
         return $this->hasMany(PedidoItem::class);
     }
 
-    public function edenreco()
+    public function endereco()
     {
         return $this->hasOne(Endereco::class);
     }

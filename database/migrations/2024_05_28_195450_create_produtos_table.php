@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('categoria_id')->constrained('categorias')->cascadeOnDelete();
             $table->foreignId('marca_id')->constrained('marcas')->cascadeOnDelete();
-            $table->string('name');
+            $table->string('nome');
             $table->string('rotulo')->unique();
             $table->json('imagens')->nullable();
             $table->longText('descricao')->nullable();
