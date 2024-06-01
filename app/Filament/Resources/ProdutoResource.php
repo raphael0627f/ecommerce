@@ -35,6 +35,7 @@ class ProdutoResource extends Resource
     protected static ?string $model = Produto::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {

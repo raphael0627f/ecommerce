@@ -28,6 +28,8 @@ class MarcaResource extends Resource
     protected static ?string $model = Marca::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
+    protected static ?string $recordTitleAttribute = 'nome';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PedidoResource\Pages;
 use App\Filament\Resources\PedidoResource\RelationManagers;
+use App\Filament\Resources\PedidoResource\RelationManagers\EnderecoRelationManager;
 use App\Models\Pedido;
 use App\Models\Produto;
 use Filament\Actions\ActionGroup;
@@ -34,6 +35,7 @@ class PedidoResource extends Resource
     protected static ?string $model = Pedido::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {
@@ -87,7 +89,7 @@ class PedidoResource extends Resource
                                 'cancelado' => 'danger',
                             ])
                             ->icons([
-                                'pendente' => 'heroicon-m-shopping-bag',
+                                'pendente' => 'heroicon-m-clock',
                                 'processando' => 'heroicon-m-arrow-path',
                                 'enviado' => 'heroicon-m-truck',
                                 'entregue' => 'heroicon-m-check-badge',
@@ -246,7 +248,7 @@ class PedidoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            EnderecoRelationManager::class,
         ];
     }
 
