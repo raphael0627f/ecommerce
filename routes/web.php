@@ -33,6 +33,6 @@ Route::get('/reset', ResetPasswordPage::class);
 Route::get('/success', SuccessPage::class);
 Route::get('/cancel', CancelPage::class);
 
-Route::get('/produtos/{produto}', DetalhesProdutoPage::class);
+Route::get('/produtos/{rotulo}', DetalhesProdutoPage::class);
 Route::get('/meu-pedido/{pedido}', DetalhesMeuPedidoPage::class);
 

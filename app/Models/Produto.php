@@ -18,7 +18,7 @@ class Produto extends Model
         'status',
         'destaque',
         'estoque',
-        'venda',
+        'promocao',
         'categoria_id',
         'marca_id',
     ];

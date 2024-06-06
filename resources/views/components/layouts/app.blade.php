@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{ $title ?? 'Charme Jóias' }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body class="bg-slate-200 dark:bg-slate-700">

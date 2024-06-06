@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('destaque')->default(false);
             $table->boolean('estoque')->default(true);
-            $table->boolean('venda')->default(false);
+            $table->boolean('promocao')->default(false);
             $table->timestamps();
         });
     }

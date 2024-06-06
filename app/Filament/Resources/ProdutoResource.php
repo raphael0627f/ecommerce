@@ -113,7 +113,7 @@ class ProdutoResource extends Resource
                             ->label('Em Destaque')
                             ->required(),
 
-                        Toggle::make('venda')
+                        Toggle::make('promocao')
                             ->label('Em Promoção')
                             ->required()
                     ])
@@ -143,7 +143,7 @@ class ProdutoResource extends Resource
                     ->label('Em Destaque')
                     ->boolean(),
 
-                IconColumn::make('venda')
+                IconColumn::make('promocao')
                     ->label('Em Promoção')
                     ->boolean(),
 
