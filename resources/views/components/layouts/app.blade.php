@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
+ <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -16,8 +17,10 @@
     <main>
         {{ $slot }}
     </main>
-    @livewireScripts
     @livewire('partials.footer')
+    @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
 </body>
 
 </html>

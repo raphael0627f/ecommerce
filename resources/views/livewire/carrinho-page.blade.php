@@ -7,58 +7,69 @@
             <table class="w-full">
               <thead>
                 <tr>
-                  <th class="text-left font-semibold">Product</th>
-                  <th class="text-left font-semibold">Price</th>
-                  <th class="text-left font-semibold">Quantity</th>
+                  <th class="text-left font-semibold">Produto</th>
+                  <th class="text-left font-semibold">Preço</th>
+                  <th class="text-left font-semibold">Quantidade</th>
                   <th class="text-left font-semibold">Total</th>
-                  <th class="text-left font-semibold">Remove</th>
+                  <th class="text-left font-semibold">Remover</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="py-4">
-                    <div class="flex items-center">
-                      <img class="h-16 w-16 mr-4" src="https://via.placeholder.com/150" alt="Product image">
-                      <span class="font-semibold">Product name</span>
-                    </div>
-                  </td>
-                  <td class="py-4">$19.99</td>
-                  <td class="py-4">
-                    <div class="flex items-center">
-                      <button class="border rounded-md py-2 px-4 mr-2">-</button>
-                      <span class="text-center w-8">1</span>
-                      <button class="border rounded-md py-2 px-4 ml-2">+</button>
-                    </div>
-                  </td>
-                  <td class="py-4">$19.99</td>
-                  <td><button class="bg-slate-300 border-2 border-slate-400 rounded-lg px-3 py-1 hover:bg-red-500 hover:text-white hover:border-red-700">Remove</button></td>
+                @forelse ($carrinho_itens as $item)
+                <tr wire:key='{{ $item['produto_id'] }}'>
+                    <td class="py-4">
+                      <div class="flex items-center">
+                        <img class="h-16 w-16 mr-4" src="{{ url('storage/'.$item['imagem'])}}" alt="{{$item['nome']}}">
+                        <span class="font-semibold">{{$item['nome']}}</span>
+                      </div>
+                    </td>
+                    <td class="py-4">{{Number::currency($item['preco_unitario'], 'BRL')}}</td>
+                    <td class="py-4">
+                      <div class="flex items-center">
+                        <button wire:click='removerQuantidade({{$item['produto_id']}})' class="border rounded-md py-2 px-4 mr-2">-</button>
+                        <span class="text-center w-8">{{$item['quantidade']}}</span>
+                        <button wire:click='addQuantidade({{$item['produto_id']}})' class="border rounded-md py-2 px-4 ml-2">+</button>
+                      </div>
+                    </td>
+                    <td class="py-4">{{Number::currency($item['valor_total'], 'BRL')}}</td>
+                    <td>
+                        <button wire:click='removerItem({{$item['produto_id']}})' class="bg-slate-300 border-2 border-slate-400 rounded-lg px-3 py-1 hover:bg-red-500 hover:text-white hover:border-red-700">
+                            <span wire:loading.remove wire:target='removerItem({{$item['produto_id']}})'>Remover</span><span wire:loading wire:target='removerItem({{$item['produto_id']}})'>Removendo...</span>
+                        </button>
+                    </td>
                 </tr>
-                <!-- More product rows -->
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center py-4 text-4xl font-semibold text-slate-500">Nenhum item disponível no carrinho!</td>
+                </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
         </div>
         <div class="md:w-1/4">
           <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-lg font-semibold mb-4">Summary</h2>
+            <h2 class="text-lg font-semibold mb-4">Resumo</h2>
             <div class="flex justify-between mb-2">
               <span>Subtotal</span>
-              <span>$19.99</span>
+              <span>{{Number::currency($valor_total, 'BRL')}}</span>
             </div>
             <div class="flex justify-between mb-2">
-              <span>Taxes</span>
-              <span>$1.99</span>
+              <span>Taxas</span>
+              <span>{{Number::currency(0, 'BRL')}}</span>
             </div>
             <div class="flex justify-between mb-2">
-              <span>Shipping</span>
-              <span>$0.00</span>
+              <span>Envio</span>
+              <span>{{Number::currency(0, 'BRL')}}</span>
             </div>
             <hr class="my-2">
             <div class="flex justify-between mb-2">
-              <span class="font-semibold">Total</span>
-              <span class="font-semibold">$21.98</span>
+              <span class="font-semibold">Valor Total</span>
+              <span class="font-semibold">{{Number::currency($valor_total, 'BRL')}}</span>
             </div>
-            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
+            @if ($carrinho_itens)
+                <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
+            @endif
           </div>
         </div>
       </div>
