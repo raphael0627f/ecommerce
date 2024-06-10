@@ -20,19 +20,27 @@ Route::get('/', HomePage::class);
 
 Route::get('/categorias', CategoriasPage::class);
 Route::get('/produtos', ProdutosPage::class);
+Route::get('/produtos/{rotulo}', DetalhesProdutoPage::class);
 Route::get('/carrinho', CarrinhoPage::class);
 
-Route::get('/checkout', CheckoutPage::class);
-Route::get('/meu-pedido', MeuPedidoPage::class);
 
-Route::get('/login', LoginPage::class);
-Route::get('/register', RegisterPage::class);
-Route::get('/forgot', ForgotPasswordPage::class);
-Route::get('/reset', ResetPasswordPage::class);
 
-Route::get('/success', SuccessPage::class);
-Route::get('/cancel', CancelPage::class);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', LoginPage::class)->name('login');
+    Route::get('/register', RegisterPage::class);
+    Route::get('/forgot', ForgotPasswordPage::class)->name('password.request');
+    Route::get('/reset/{token}', ResetPasswordPage::class)->name('password.reset');
+});
 
-Route::get('/produtos/{rotulo}', DetalhesProdutoPage::class);
-Route::get('/meu-pedido/{pedido}', DetalhesMeuPedidoPage::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', function () {
+        auth()->logout();
+        return redirect('/');
+    });
+    Route::get('/checkout', CheckoutPage::class);
+    Route::get('/meu-pedido', MeuPedidoPage::class);
+    Route::get('/meu-pedido/{pedido}', DetalhesMeuPedidoPage::class);
+    Route::get('/success', SuccessPage::class);
+    Route::get('/cancel', CancelPage::class);
+});
 
