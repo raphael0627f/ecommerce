@@ -22,7 +22,7 @@ class GestaoCarrinho{
 
         if ($existe_item !== null) {
             $carrinho_itens[$existe_item]["quantidade"]++;
-            $carrinho_itens[$existe_item]["valor_total"] = $carrinho_itens[$existe_item]["quantidade"] * $carrinho_itens[$existe_item]["preco_unitario"];
+            $carrinho_itens[$existe_item]["preco_total"] = $carrinho_itens[$existe_item]["quantidade"] * $carrinho_itens[$existe_item]["preco_unitario"];
 
         }else{
             $produto = Produto::where("id", $produto_id)->first(['id', 'nome', 'preco', 'imagens']);
@@ -33,7 +33,7 @@ class GestaoCarrinho{
                     'imagem' => $produto->imagens[0],
                     'quantidade' => 1,
                     'preco_unitario' => $produto->preco,
-                    'valor_total' => $produto->preco,
+                    'preco_total' => $produto->preco,
                 ];
             }
         }
@@ -56,8 +56,8 @@ class GestaoCarrinho{
         }
 
         if ($existe_item !== null) {
-            $carrinho_itens[$existe_item]["quantidade"] = $quantidade;
-            $carrinho_itens[$existe_item]["valor_total"] = $carrinho_itens[$existe_item]["quantidade"] * $carrinho_itens[$existe_item]["preco_unitario"];
+            $carrinho_itens[$existe_item]["quantidade"] = $quantidade + $item['quantidade'];
+            $carrinho_itens[$existe_item]["preco_total"] = $carrinho_itens[$existe_item]["quantidade"] * $carrinho_itens[$existe_item]["preco_unitario"];
 
         }else{
             $produto = Produto::where("id", $produto_id)->first(['id', 'nome', 'preco', 'imagens']);
@@ -68,7 +68,7 @@ class GestaoCarrinho{
                     'imagem' => $produto->imagens[0],
                     'quantidade' => $quantidade,
                     'preco_unitario' => $produto->preco,
-                    'valor_total' => $produto->preco,
+                    'preco_total' => $produto->preco * $quantidade,
                 ];
             }
         }
@@ -118,7 +118,7 @@ class GestaoCarrinho{
         foreach($carrinho_itens as $key => $item){
             if($item['produto_id'] == $produto_id){
                 $carrinho_itens[$key]['quantidade']++;
-                $carrinho_itens[$key]['valor_total'] = $carrinho_itens[$key]['quantidade'] * $carrinho_itens[$key]['preco_unitario'];
+                $carrinho_itens[$key]['preco_total'] = $carrinho_itens[$key]['quantidade'] * $carrinho_itens[$key]['preco_unitario'];
             }
         }
 
@@ -134,7 +134,7 @@ class GestaoCarrinho{
             if($item['produto_id'] == $produto_id){
                if($carrinho_itens[$key]['quantidade'] > 1){
                    $carrinho_itens[$key]['quantidade']--;
-                   $carrinho_itens[$key]['valor_total'] = $carrinho_itens[$key]['quantidade'] * $carrinho_itens[$key]['preco_unitario'];
+                   $carrinho_itens[$key]['preco_total'] = $carrinho_itens[$key]['quantidade'] * $carrinho_itens[$key]['preco_unitario'];
                }
             }
         }
@@ -146,7 +146,7 @@ class GestaoCarrinho{
     // calcular valor total do carrinho
 
     static public function calcularValorTotalCarrinho($itens){
-        return array_sum(array_column($itens,'valor_total'));
+        return array_sum(array_column($itens,'preco_total'));
     }
 }
 

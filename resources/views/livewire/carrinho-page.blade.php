@@ -31,7 +31,7 @@
                         <button wire:click='addQuantidade({{$item['produto_id']}})' class="border rounded-md py-2 px-4 ml-2">+</button>
                       </div>
                     </td>
-                    <td class="py-4">{{Number::currency($item['valor_total'], 'BRL')}}</td>
+                    <td class="py-4">{{Number::currency($item['preco_total'], 'BRL')}}</td>
                     <td>
                         <button wire:click='removerItem({{$item['produto_id']}})' class="bg-slate-300 border-2 border-slate-400 rounded-lg px-3 py-1 hover:bg-red-500 hover:text-white hover:border-red-700">
                             <span wire:loading.remove wire:target='removerItem({{$item['produto_id']}})'>Remover</span><span wire:loading wire:target='removerItem({{$item['produto_id']}})'>Removendo...</span>

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePage::class);
 
 Route::get('/categorias', CategoriasPage::class);
-Route::get('/produtos', ProdutosPage::class);
+Route::get('/produtos', ProdutosPage::class)->name('produtos');
 Route::get('/produtos/{rotulo}', DetalhesProdutoPage::class);
 Route::get('/carrinho', CarrinhoPage::class);
 
@@ -38,9 +38,9 @@ Route::middleware('auth')->group(function () {
         return redirect('/');
     });
     Route::get('/checkout', CheckoutPage::class);
-    Route::get('/meu-pedido', MeuPedidoPage::class);
-    Route::get('/meu-pedido/{pedido}', DetalhesMeuPedidoPage::class);
-    Route::get('/success', SuccessPage::class);
-    Route::get('/cancel', CancelPage::class);
+    Route::get('/meus-pedidos', MeuPedidoPage::class)->name('meus-pedidos');
+    Route::get('/meus-pedidos/{pedido_id}', DetalhesMeuPedidoPage::class)->name('meus-pedidos.show');
+    Route::get('/success', SuccessPage::class)->name('success');
+    Route::get('/cancel', CancelPage::class)->name('cancel');
 });
 

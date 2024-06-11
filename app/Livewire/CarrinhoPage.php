@@ -34,7 +34,6 @@ class CarrinhoPage extends Component
     {
         $this->carrinho_itens = GestaoCarrinho::obterTodosItensCarrinho();
         $this->valor_total = GestaoCarrinho::calcularValorTotalCarrinho($this->carrinho_itens);
-
     }
 
     public function render()
