@@ -93,7 +93,12 @@
                       </h3>
                     </div>
                     <p class="text-lg ">
-                      <span class="text-green-600 dark:text-green-600">{{ Number::currency($produto->preco, 'BRL')}}</span>
+                      @guest
+                        <span class="text-green-600 dark:text-green-600">R$ - SOMENTE LOGADO</span>
+                      @endguest
+                      @auth
+                        <span class="text-green-600 dark:text-green-600">{{ Number::currency($produto->preco, 'BRL')}}</span>
+                      @endauth  
                     </p>
                   </div>
                   <div class="flex justify-center p-4 border-t border-gray-300 dark:border-gray-700">
