@@ -374,15 +374,15 @@
                                                         <div class="bg-banner">
                                                             <div class="banner-wrapper banners">
                                                                 <div class="banner-image">
-                                                                    <a href="shop-grid-left.html">
+                                                                    <a href="/produtos">
                                                                         <img width="630" height="457" src="template/media/banner/banner-1-1.jpg" alt="Banner Image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="banner-wrapper-infor">
                                                                     <div class="info">
                                                                         <div class="content">
-                                                                            <h3 class="title-banner">New Arrivals</h3>
-                                                                            <a class="button" href="shop-grid-left.html">Shop Now</a>
+                                                                            <h3 class="title-banner">Novidades</h3>
+                                                                            <a class="button" href="/produtos">Veja Aqui</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,15 +395,15 @@
                                                         <div class="bg-banner">
                                                             <div class="banner-wrapper banners">
                                                                 <div class="banner-image">
-                                                                    <a href="shop-grid-left.html">
+                                                                    <a href="/produtos">
                                                                         <img width="450" height="457" src="template/media/banner/banner-1-2.jpg" alt="Banner Image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="banner-wrapper-infor text-center">
                                                                     <div class="info">
                                                                         <div class="content">
-                                                                            <h3 class="title-banner">Best Seller</h3>
-                                                                            <a class="button center" href="shop-grid-left.html">Shop Now</a>
+                                                                            <h3 class="title-banner">Preferidos</h3>
+                                                                            <a class="button center" href="/produtos">Veja Aqui</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -416,15 +416,15 @@
                                                         <div class="bg-banner">
                                                             <div class="banner-wrapper banners">
                                                                 <div class="banner-image">
-                                                                    <a href="shop-grid-left.html">
+                                                                    <a href="/produtos">
                                                                         <img width="630" height="457" src="template/media/banner/banner-1-3.jpg" alt="Banner Image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="banner-wrapper-infor">
                                                                     <div class="info">
                                                                         <div class="content">
-                                                                            <h3 class="title-banner">Clearance Sale</h3>
-                                                                            <a class="button" href="shop-grid-left.html">Shop Now</a>
+                                                                            <h3 class="title-banner">Em promoção</h3>
+                                                                            <a class="button" href="/produtos">Veja Aqui</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
